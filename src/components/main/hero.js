@@ -66,7 +66,7 @@ function Item(props)
             <div className="carousel-content">
                 <h2 className="animate__animated fanimate__adeInDown">{props.titleStart} <span>{props.titleSpam}</span></h2>
                 <p className="animate__animated animate__fadeInUp">{props.description}</p>
-                <a href="portfolio.html" className="btn-get-started animate__animated animate__fadeInUp">Conoce mas sobre nosotros.</a>
+                <a href="#" className="btn-get-started animate__animated animate__fadeInUp">Conoce mas sobre nosotros.</a>
             </div>
         </div>
     

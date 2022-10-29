@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import AppBody from "./appBody";
 
-function Header() {
+var view=1;
+
+export function Header() {
+
+    const [activePage, setActivePage] = useState(1);
+
     return (
         <div>
             <header id="header" className="d-flex align-items-center">
                 <div className="container d-flex justify-content-between align-items-center">
                     <div className="logo">
-                        <h1><a href="index.html">Herencia de Mexico R.D.</a></h1>
+                        <h1><a href="#">Herencia de Mexico R.D.</a></h1>
                         {/* <!-- Uncomment below if you prefer to use an image logo -->
                         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" className="img-fluid"></a>--> */}
                     </div>
 
                     <nav id="navbar" className="navbar">
                         <ul>
-                            <li><a className="active" href="index.html">Inicio</a></li>
+                            <li onClick={() => manageActivePage(1)} ><a className={getClassName(1, activePage)} href="#" >Inicio</a></li>
                             {/* <!-- <li><a href="about.html">About</a></li> --> */}
                             {/* <!-- <li><a href="services.html">Services</a></li> --> */}
-                            <li><a href="portfolio.html">Galeria</a></li>
+                            <li onClick={() => manageActivePage(2)} ><a className={getClassName(2, activePage)}href="#" >Galeria</a></li>
                             {/* <!-- <li><a href="team.html">Team</a></li> --> */}
                             {/* <!-- <li><a href="pricing.html">Pricing</a></li> --> */}
                             {/* <!-- <li><a href="blog.html">Blog</a></li> */}
@@ -37,15 +43,31 @@ function Header() {
                                     <li><a href="#">Drop Down 4</a></li>
                                 </ul>
                             </li>  */}
-                            <li><a href="contact.html">Contacto</a></li>
+                            <li onClick={() => manageActivePage(3)} ><a className={getClassName(3, activePage)} href="#" >Contacto</a></li>
                         </ul>
-                        <i className="bi bi-list mobile-nav-toggle"></i>
+                        <i className="bi bi-list mobile-nav-toggle" ></i>
                     </nav>
 
                 </div>
             </header>
+            <AppBody/>
         </div>
     );
+
+    function manageActivePage(page) {
+        setActivePage(page);
+        view = page;
+    };
+
 }
 
-export default Header;
+export function getView() {
+    return view;
+};
+
+function getClassName(elementId, activeId) {
+    if (elementId === activeId)
+        return ("active")
+    else
+        return ""
+}
